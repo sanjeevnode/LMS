@@ -1,9 +1,17 @@
 import { RiAdminLine } from "react-icons/ri";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { adminlogin } from "../config.js";
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const formSubmit = (data, e) => {
+    const status = adminlogin(data.username, data.password);
+    if (!status) {
+      toast.error("Login Failed", {
+        duration: 500,
+      });
+      return;
+    }
     toast.success("Login Successful", {
       duration: 500,
     });
