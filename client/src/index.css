@@ -1,9 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-background text-text font-body;
+    @apply bg-background text-text font-[Montserrat];
+    @apply bg-[url('https://images.unsplash.com/photo-1549675584-91f19337af3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2944&q=80')] bg-blend-soft-light bg-cover bg-no-repeat;
   }
+  td,
+  th {
+    @apply py-2 border border-text;
+  }
+}
+
+/* .active {
+  @apply text-primary;
+} */
+
+.dashboard .active {
+  @apply bg-accent text-secondary transition-all duration-300 ease-in-out;
 }

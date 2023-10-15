@@ -1,14 +1,21 @@
 import mongoose from "mongoose";
 
 const borrowSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "student",
+  student: {
+    type: Object,
     required: true,
   },
   books: {
     type: Array,
     default: [],
+  },
+  borrowDate: {
+    type: String,
+    required: true,
+  },
+  returnDate: {
+    type: String,
+    required: true,
   },
 });
 

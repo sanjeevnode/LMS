@@ -7,8 +7,9 @@ import Book from "../models/bookModel.js";
 
 const addBook = async (req, res) => {
   try {
-    const { title, author, price, category, count } = req.body;
+    const { bookId, title, author, price, category, count } = req.body;
     const book = await Book.create({
+      bookId,
       title,
       author,
       price,
@@ -18,6 +19,7 @@ const addBook = async (req, res) => {
 
     res.status(201).json({
       _id: book._id,
+      bookId: book.bookId,
       title: book.title,
       author: book.author,
       price: book.price,
@@ -36,7 +38,10 @@ const addBook = async (req, res) => {
 
 const getBooks = async (req, res) => {
   try {
-    const books = await Book.find({}, "title author price category count");
+    const books = await Book.find(
+      {},
+      "title author price category count bookId"
+    );
     res.json(books);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -67,6 +72,7 @@ const updateBook = async (req, res) => {
 
     res.status(200).json({
       _id: book._id,
+      bookId: book.bookId,
       title: book.title,
       author: book.author,
       price: book.price,

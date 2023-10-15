@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 
 const bookSchema = mongoose.Schema(
   {
+    bookId: {
+      type: String,
+      required: true,
+    },
+
     title: {
       type: String,
       required: true,

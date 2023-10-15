@@ -7,13 +7,15 @@ import Student from "../models/studentModel.js";
 
 const addStudent = async (req, res) => {
   try {
-    const { name, email, enrollment_number, branch, semester } = req.body;
+    const { name, email, enrollment_number, branch, semester, phone } =
+      req.body;
 
     const student = await Student.create({
       name,
       email,
       enrollment_number,
       branch,
+      phone,
       semester,
     });
 
@@ -21,6 +23,7 @@ const addStudent = async (req, res) => {
       _id: student._id,
       name: student.name,
       email: student.email,
+      phone: student.phone,
       enrollment_number: student.enrollment_number,
       branch: student.branch,
       semester: student.semester,
@@ -39,7 +42,7 @@ const getStudents = async (req, res) => {
   try {
     const students = await Student.find(
       {},
-      "name  email enrollment_number  branch semester"
+      "name  email enrollment_number  branch semester  phone"
     );
 
     res.json(students);
@@ -58,7 +61,7 @@ const getStudentById = async (req, res) => {
     const { ENo } = req.params;
     const student = await Student.findOne(
       { enrollment_number: ENo },
-      "name email enrollment_number branch semester"
+      "name email enrollment_number branch semester phone"
     );
 
     res.json(student);
@@ -75,7 +78,7 @@ const getStudentById = async (req, res) => {
 const updateStudentById = async (req, res) => {
   try {
     const { _id } = req.params;
-    const { email, branch, semester } = req.body;
+    const { email, branch, semester, phone } = req.body;
 
     const student = await Student.findById(_id);
 
@@ -83,6 +86,7 @@ const updateStudentById = async (req, res) => {
       student.email = email || student.email;
       student.branch = branch || student.branch;
       student.semester = semester || student.semester;
+      student.phone = phone || student.phone;
     }
 
     await student.save();
@@ -92,6 +96,7 @@ const updateStudentById = async (req, res) => {
       name: student.name,
       email: student.email,
       enrollment_number: student.enrollment_number,
+      phone: student.phone,
       branch: student.branch,
       semester: student.semester,
     });

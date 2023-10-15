@@ -6,6 +6,7 @@ dotenv.config();
 import adminRoutes from "./routes/adminRoutes.js";
 import studentRoutes from "./routes/studentRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
+import borrowRoutes from "./routes/borrowRoutes.js";
 connectDB();
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/admin", adminRoutes);
 app.use("/api/student", studentRoutes);
 app.use("/api/book", bookRoutes);
+app.use("/api/borrow", borrowRoutes);
 
 app.get("/", (req, res) => {
   res.send("Api is running");
