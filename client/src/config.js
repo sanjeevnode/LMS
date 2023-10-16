@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://bookwise-31rv.onrender.com/api";
 /*
  *Admin Routes
  */
