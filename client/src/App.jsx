@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import Books from "./components/book/Books";
 import Students from "./components/student/Students";
 import { getBooks, getStudents } from "./config";
+import Icon from "./components/utils/Icon";
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(
@@ -75,6 +76,7 @@ const App = () => {
             element={isLogin ? <Books /> : <Navigate to="/" />}
           />
         </Routes>
+        <Icon />
       </div>
     </Context.Provider>
   );
